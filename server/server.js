@@ -14,15 +14,15 @@ app.use(express.json())
 
 app.use(require("./routes/record"))
 
+app.get('/*', (req, res) => {
+   res.sendFile(path.join(__dirname, '/../', 'build', 'index.html'));
+});
+
 // const dbo = require("./db/conn")
 
 app.get("/", function(req, res) {
     res.send("App is running")
 })
-
-app.get('/*', (req, res) => {
-   res.sendFile(path.join(__dirname, '/../', 'build', 'index.html'));
-});
 
 // dbo.connectToMongoDB(function (error) {
 //     if (error) throw error
