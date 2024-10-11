@@ -5,6 +5,8 @@ const cors = require("cors")
 
 require("dotenv").config()
 
+
+
 const port = process.env.PORT || 5000
 
 app.use(cors())
@@ -17,6 +19,10 @@ app.use(require("./routes/record"))
 app.get("/", function(req, res) {
     res.send("App is running")
 })
+
+app.get('/*', (req, res) => {
+   res.sendFile(path.join(__dirname, '/../', 'build', 'index.html'));
+});
 
 // dbo.connectToMongoDB(function (error) {
 //     if (error) throw error
